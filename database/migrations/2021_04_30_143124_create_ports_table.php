@@ -16,7 +16,7 @@ class CreatePortsTable extends Migration
         Schema::create('ports', function (Blueprint $table) {
             $table->id();
             $table->foreignId("switch_id");
-            $table->string("number");
+            $table->string("port_number");
             $table->string("ethernet");
             $table->string("installed_by");
             $table->date("installed_on");

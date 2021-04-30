@@ -17,7 +17,7 @@ class PortController extends Controller
 
     public function store(Request $request) {
         $port = Port::create([
-            'number' => $request->input("number"),
+            'port_number' => $request->input("port_number"),
             'ethernet' => $request->input("ethernet"),
             'installed_by' => $request->input("installed_by"),
             'installed_on' => $request->input("installed_on"),
@@ -35,7 +35,7 @@ class PortController extends Controller
 
     public function update(Request $request, Port $port) {
         $port->update([
-            'number' => $request->input("number"),
+            'port_number' => $request->input("port_number"),
             'ethernet' => $request->input("ethernet"),
             'installed_by' => $request->input("installed_by"),
             'installed_on' => $request->input("installed_on"),
