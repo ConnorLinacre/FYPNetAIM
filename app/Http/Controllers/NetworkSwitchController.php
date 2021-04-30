@@ -43,6 +43,6 @@ class NetworkSwitchController extends Controller
 
     public function destroy(NetworkSwitch $networkswitch) {
         $networkswitch->delete();
-        return redirect()->route('all_networkswitch');
+        return redirect()->route('all_networkswitches');
     }
 }
