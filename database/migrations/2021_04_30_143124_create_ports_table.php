@@ -17,7 +17,7 @@ class CreatePortsTable extends Migration
             $table->id();
             $table->foreignId("switch_id");
             $table->string("port_number");
-            $table->string("ethernet");
+            $table->string("access_point");
             $table->string("installed_by");
             $table->date("installed_on");
             $table->timestamps();

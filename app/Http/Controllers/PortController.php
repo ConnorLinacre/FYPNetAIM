@@ -36,7 +36,7 @@ class PortController extends Controller
     public function update(Request $request, Port $port) {
         $port->update([
             'port_number' => $request->input("port_number"),
-            'ethernet' => $request->input("ethernet"),
+            'access_point' => $request->input("access_point"),
             'installed_by' => $request->input("installed_by"),
             'installed_on' => $request->input("installed_on"),
         ]);
