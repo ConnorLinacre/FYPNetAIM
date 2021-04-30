@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Building;
 use App\Models\Campus;
 use App\Models\NetworkSwitch;
+use App\Models\Port;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +26,10 @@ class DatabaseSeeder extends Seeder
                 $switches = NetworkSwitch::factory(3)->make();
 
                 $building->switches()->saveMany($switches);
+                $switches->each(function($netswitch) {
+                    $ports = Port::factory(3)->make();
+                    $netswitch->ports()->saveMany($ports);
+                });
             });
         });
     }
