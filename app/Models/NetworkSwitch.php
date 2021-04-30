@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class NetworkSwitch extends Model
 {
     use HasFactory;
+
+    public function building() {
+        return $this->belongsTo(Building::class);
+    }
 }

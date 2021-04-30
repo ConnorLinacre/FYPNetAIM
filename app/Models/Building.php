@@ -12,4 +12,8 @@ class Building extends Model
     public function campus() {
         return $this->belongsTo(Campus::class);
     }
+
+    public function switches() {
+        return $this->hasMany(NetworkSwitch::class);
+    }
 }
