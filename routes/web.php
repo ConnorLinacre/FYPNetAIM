@@ -33,6 +33,13 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/networkswitch/update/{networkswitch}', 'NetworkswitchController@edit')->name('edit_networkswitch');
     Route::post('/networkswitch/update/{networkswitch}', 'NetworkswitchController@update')->name('edit_networkswitch');
     Route::get('/networkswitch/delete/{networkswitch}', 'NetworkswitchController@destroy')->name('delete_networkswitch');
+
+    Route::get('/port/create', 'PortController@create')->name('create_port');
+    Route::post('/port/create', 'PortController@store')->name('create_port');
+    Route::get('/port/update/{port}', 'PortController@edit')->name('edit_port');
+    Route::post('/port/update/{port}', 'PortController@update')->name('edit_port');
+    Route::get('/port/delete/{port}', 'PortController@destroy')->name('delete_port');
+
 });
 
 Route::get('/', function () {
@@ -50,4 +57,7 @@ Route::get('/building/{building}', 'BuildingController@show')->name('view_buildi
 
 Route::get('/networkswitch', 'NetworkswitchController@index')->name('all_networkswitches');
 Route::get('/networkswitch/{networkswitch}', 'NetworkswitchController@show')->name('view_networkswitch');
+
+Route::get('/port', 'PortController@index')->name('all_ports');
+Route::get('/port/{port}', 'PortController@show')->name('view_port');
 
