@@ -15,6 +15,10 @@ class CreateNetworkSwitchesTable extends Migration
     {
         Schema::create('network_switches', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("building_id");
+            $table->string("name");
+            $table->string("floor");
+            $table->string("model");
             $table->timestamps();
         });
     }
