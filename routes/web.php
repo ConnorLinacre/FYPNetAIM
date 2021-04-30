@@ -48,6 +48,6 @@ Route::get('/campus/{campus}', 'CampusController@show')->name('view_campus');
 Route::get('/building', 'BuildingController@index')->name('all_buildings');
 Route::get('/building/{building}', 'BuildingController@show')->name('view_building');
 
-Route::get('/networkswitch', 'NetworkswitchController@index')->name('all_networkswitch');
-Route::get('/networkswitch/{networkswitch}', 'NetworkswitchController@show')->name('view_networkswitchs');
+Route::get('/networkswitch', 'NetworkswitchController@index')->name('all_networkswitchs');
+Route::get('/networkswitch/{networkswitch}', 'NetworkswitchController@show')->name('view_networkswitch');
 
