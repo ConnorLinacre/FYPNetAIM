@@ -21,6 +21,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/campus/update/{campus}', 'CampusController@edit')->name('edit_campus');
     Route::post('/campus/update/{campus}', 'CampusController@update')->name('edit_campus');
     Route::get('/campus/delete/{campus}', 'CampusController@destroy')->name('delete_campus');
+
+    Route::get('/building/create', 'BuildingController@create')->name('create_building');
+    Route::post('/building/create', 'BuildingController@store')->name('create_building');
+    Route::get('/building/update/{building}', 'BuildingController@edit')->name('edit_building');
+    Route::post('/building/update/{building}', 'BuildingController@update')->name('edit_building');
+    Route::get('/building/delete/{building}', 'BuildingController@destroy')->name('delete_building');
 });
 
 Route::get('/', function () {
@@ -29,6 +35,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/campus', 'CampusController@index')->name('all_campus');
 Route::get('/campus/{campus}', 'CampusController@show')->name('view_campus');
+
+Route::get('/building', 'BuildingController@index')->name('all_building');
+Route::get('/building/{building}', 'BuildingController@show')->name('view_building');
 
