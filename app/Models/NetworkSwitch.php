@@ -12,4 +12,8 @@ class NetworkSwitch extends Model
     public function building() {
         return $this->belongsTo(Building::class);
     }
+
+    public function ports() {
+        return $this->hasMany(Port::class);
+    }
 }

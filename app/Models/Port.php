@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Port extends Model
 {
     use HasFactory;
+
+    public function networkSwitch() {
+        return $this->belongsTo(NetworkSwitch::class);
+    }
 }
