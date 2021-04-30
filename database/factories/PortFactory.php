@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Port;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Date;
 
 class PortFactory extends Factory
 {
@@ -22,7 +23,10 @@ class PortFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'port_number' => $this->faker->numberBetween(1,10),
+            'access_point' => "T".$this->faker->numberBetween(1,4)."-".$this->faker->randomNumber(4),
+            'installed_by' => $this->faker->name,
+            'installed_on' => now(),
         ];
     }
 }
