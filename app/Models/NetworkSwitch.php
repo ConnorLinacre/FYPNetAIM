@@ -14,6 +14,6 @@ class NetworkSwitch extends Model
     }
 
     public function ports() {
-        return $this->hasMany(Port::class);
+        return $this->hasMany(Port::class, "switch_id");
     }
 }

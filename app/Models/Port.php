@@ -10,6 +10,6 @@ class Port extends Model
     use HasFactory;
 
     public function networkSwitch() {
-        return $this->belongsTo(NetworkSwitch::class);
+        return $this->belongsTo(NetworkSwitch::class, "switch_id");
     }
 }
