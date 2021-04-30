@@ -15,6 +15,9 @@ class CreateBuildingsTable extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("campus_id");
+            $table->string("name");
+            $table->string("address");
             $table->timestamps();
         });
     }
