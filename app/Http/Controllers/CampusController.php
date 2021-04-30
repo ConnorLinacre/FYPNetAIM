@@ -42,6 +42,6 @@ class CampusController extends Controller
 
     public function destroy(Campus $campus) {
         $campus->delete();
-        return redirect()->route('all_campuss');
+        return redirect()->route('all_campus');
     }
 }
