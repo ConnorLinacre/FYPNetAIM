@@ -27,6 +27,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/building/update/{building}', 'BuildingController@edit')->name('edit_building');
     Route::post('/building/update/{building}', 'BuildingController@update')->name('edit_building');
     Route::get('/building/delete/{building}', 'BuildingController@destroy')->name('delete_building');
+
+    Route::get('/networkswitch/create', 'NetworkswitchController@create')->name('create_networkswitch');
+    Route::post('/networkswitch/create', 'NetworkswitchController@store')->name('create_networkswitch');
+    Route::get('/networkswitch/update/{networkswitch}', 'NetworkswitchController@edit')->name('edit_networkswitch');
+    Route::post('/networkswitch/update/{networkswitch}', 'NetworkswitchController@update')->name('edit_networkswitch');
+    Route::get('/networkswitch/delete/{networkswitch}', 'NetworkswitchController@destroy')->name('delete_networkswitch');
 });
 
 Route::get('/', function () {
@@ -39,6 +45,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/campus', 'CampusController@index')->name('all_campus');
 Route::get('/campus/{campus}', 'CampusController@show')->name('view_campus');
 
-Route::get('/building', 'BuildingController@index')->name('all_building');
+Route::get('/building', 'BuildingController@index')->name('all_buildings');
 Route::get('/building/{building}', 'BuildingController@show')->name('view_building');
+
+Route::get('/networkswitch', 'NetworkswitchController@index')->name('all_networkswitch');
+Route::get('/networkswitch/{networkswitch}', 'NetworkswitchController@show')->name('view_networkswitchs');
 
