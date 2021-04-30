@@ -2,27 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NetworkSwitch;
 use App\Models\Port;
 use Illuminate\Http\Request;
 
 class PortController extends Controller
 {
-    public function index() {
-        return view('content.port.table', ['port' => Port::all(),]);
+    public function index(NetworkSwitch $switch = null) {
+        if ($switch == null) {
+            return view('content.port.table', ['ports' => Port::all(),]);
+        } else {
+            return view('content.port.table', ['ports' => $switch->ports,]);
+        }
     }
 
-    public function create() {
-        return view('content.port.create');
+    public function create(NetworkSwitch $switch) {
+        return view('content.port.create', ['switch' => $switch,]);
     }
 
-    public function store(Request $request) {
-        $port = Port::create([
+    public function store(Request $request, NetworkSwitch $switch) {
+        $switch->ports()->create([
             'port_number' => $request->input("port_number"),
-            'ethernet' => $request->input("ethernet"),
+            'access_point' => $request->input("access_point"),
             'installed_by' => $request->input("installed_by"),
             'installed_on' => $request->input("installed_on"),
         ]);
-        $port->save();
     }
 
     public function view(Port $port) {

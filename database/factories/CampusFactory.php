@@ -22,7 +22,7 @@ class CampusFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->firstName . $this->faker->lastName . " Campus",
+            'name' => $this->faker->firstName . ' ' . $this->faker->lastName . " Campus",
             'address' => $this->faker->address
         ];
     }

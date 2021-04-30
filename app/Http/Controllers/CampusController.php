@@ -9,7 +9,7 @@ class CampusController extends Controller
 {
 
     public function index() {
-        return view('content.campus.table', ['campus' => Campus::all(),]);
+        return view('content.campus.table', ['campuses' => Campus::all(),]);
     }
 
     public function create() {

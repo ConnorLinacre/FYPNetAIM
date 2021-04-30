@@ -9,6 +9,8 @@ class Building extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'address'];
+
     public function campus() {
         return $this->belongsTo(Campus::class);
     }

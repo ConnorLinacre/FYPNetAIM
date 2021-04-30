@@ -2,47 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
 use App\Models\NetworkSwitch;
 use Illuminate\Http\Request;
 
 class NetworkSwitchController extends Controller
 {
-    public function index() {
-        return view('content.networkswitch.table', ['networkswitch' => NetworkSwitch::all(),]);
+    public function index(Building $building = null) {
+        if ($building == null) {
+            return view('content.networkswitch.table', ['switches' => NetworkSwitch::all(),]);
+        } else {
+            return view('content.networkswitch.table', ['switches' => $building->switches,]);
+        }
     }
 
-    public function create() {
-        return view('content.networkswitch.create');
+    public function create(Building $building) {
+        return view('content.networkswitch.create', ['building' => $building,]);
     }
 
-    public function store(Request $request) {
-        $networkswitch = NetworkSwitch::create([
+    public function store(Request $request, Building $building) {
+        $building->switches()->create([
             'name' => $request->input('name'),
             'floor' => $request->input('floor'),
             'serial' => $request->input('serial'),
         ]);
-        $networkswitch->save();
     }
 
-    public function view(NetworkSwitch $networkswitch) {
-        return view('content.networkswitch.view', ['networkswitch', $networkswitch]);
+    public function view(NetworkSwitch $switch) {
+        return view('content.networkswitch.view', ['switch' => $switch,]);
     }
 
-    public function edit(NetworkSwitch $networkswitch) {
-        return view('content.networkswitch.update', ['networkswitch', $networkswitch]);
+    public function edit(NetworkSwitch $switch) {
+        return view('content.networkswitch.update', ['switch' => $switch,]);
     }
 
-    public function update(Request $request, NetworkSwitch $networkswitch) {
-        $networkswitch->update([
+    public function update(Request $request, NetworkSwitch $switch) {
+        $switch->update([
             'name' => $request->input('name'),
             'floor' => $request->input('floor'),
             'serial' => $request->input('serial'),
         ]);
-        $networkswitch->save();
+        $switch->save();
     }
 
-    public function destroy(NetworkSwitch $networkswitch) {
-        $networkswitch->delete();
-        return redirect()->route('all_networkswitches');
+    public function destroy(NetworkSwitch $switch) {
+        $switch->delete();
+        return redirect()->route('all_switches');
     }
 }
