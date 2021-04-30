@@ -21,8 +21,13 @@ class NetworkSwitchFactory extends Factory
      */
     public function definition()
     {
+        $floor = $this->faker->numberBetween(0,5);
+        $floor = $floor == 0 ? 'G' : '' . $floor;
+        $model = $this->faker->randomNumber(4) . '-' . $this->faker->randomNumber(4);
         return [
-            //
+            'name' => 'T' . $floor . '-' . $this->faker->numberBetween(1,3) . '-' . $model,
+            'floor' => 'Floor ' . $floor == 'G' ? "Ground" : $floor,
+            'model' => $model,
         ];
     }
 }
