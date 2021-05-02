@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<span style="font-size: 24px">Lorem Ipsum Dolor Sit Het</span><br />
+<span style="font-size: 24px">Welcome to your locational storage, here you can start adding new infrastructure by clicking "Create Campus"</span><br />
 <table id="campuses" class="table" style="margin-left: auto; margin-right: auto; width: 97%; border: 3px solid #343a40">
     <thead class="thead-dark">
         <tr>

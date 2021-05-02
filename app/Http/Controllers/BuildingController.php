@@ -28,11 +28,12 @@ class BuildingController extends Controller
          * Saving the item with the user id manually set would not work
          * which meant that the item had to be created through the buildings
          * and then saved via the user.
-         *
+         * U1653940
          * This took some time to figure out, as no online resources were available to help
          * and trial and error had to be employed to find a solution.
          *
          * This was the same for all of the store methods, barring campus (since it has a single relationship)
+         * U1653940
          */
         $building = $campus->buildings()->make([ // Make creates a model entry without saving
             'name' => $request->input('name'),

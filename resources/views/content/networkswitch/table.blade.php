@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<span style="font-size: 24px">Lorem Ipsum Dolor Sit Het</span><br />
+<span style="font-size: 24px">All known network devices:</span><br />
 <form action="@if ($building != null){{ route('all_buildings', $building->campus) }}@else{{ route('all_buildings') }}@endif" method="get">
     <button type="submit" class="btn btn-success">Back to Building</button>
 </form>

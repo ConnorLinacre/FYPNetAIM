@@ -15,7 +15,9 @@ class UserController extends Controller
     public function show() {
         return view('content.user');
     }
-
+    /*
+     * U1653940
+     */
     public function changeUserInfo(Request $request) {
         $errors = [];
         // Modifying Auth::user() does not save information, so fetch user by id

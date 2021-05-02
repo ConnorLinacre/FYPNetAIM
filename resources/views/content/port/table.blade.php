@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<span style="font-size: 24px">Lorem Ipsum Dolor Sit Het</span><br />
+<span style="font-size: 24px">Ports, Access-Points and Installation details of switch:</span><br />
 <form action="@if ($switch != null){{ route('all_switches', $switch->building) }}@else{{ route('all_switches') }}@endif" method="get">
     <button type="submit" class="btn btn-success">Back to Switch</button>
 </form>
