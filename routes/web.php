@@ -5,6 +5,7 @@ use App\Http\Controllers\CampusController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NetworkSwitchController;
 use App\Http\Controllers\PortController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/campus/{campus}/building/create', [BuildingController::class, 'store'])->name('create_building');
     Route::get('/building/update/{building}', [BuildingController::class, 'edit'])->name('edit_building');
     Route::post('/building/update/{building}', [BuildingController::class, 'update'])->name('edit_building');
-    Route::get('/building/delete/{building}', [BuildingController::class, 'destroy'])->name('delete_building');
+    Route::get('/building/{building}/delete', [BuildingController::class, 'destroy'])->name('delete_building');
 
     Route::get('/building/{building}/switch/create', [NetworkSwitchController::class, 'create'])->name('create_switch');
     Route::post('/building/{building}/switch/create', [NetworkSwitchController::class, 'store'])->name('create_switch');
@@ -44,22 +45,24 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/port/update/{port}', [PortController::class, 'update'])->name('edit_port');
     Route::get('/port/delete/{port}', [PortController::class, 'destroy'])->name('delete_port');
 
+    Route::get('/campus', [CampusController::class, 'index'])->name('all_campus');
+    Route::get('/campus/{campus}/show', [CampusController::class, 'view'])->name('view_campus');
+
+    Route::get('/building/{campus?}', [BuildingController::class, 'index'])->name('all_buildings');
+    Route::get('/building/{building}/show', [BuildingController::class, 'view'])->name('view_building');
+
+    Route::get('/switch/{building?}', [NetworkSwitchController::class, 'index'])->name('all_switches');
+    Route::get('/switch/{switch}/show', [NetworkSwitchController::class, 'view'])->name('view_switch');
+
+    Route::get('/port/{switch?}', [PortController::class, 'index'])->name('all_ports');
+    Route::get('/port/{port}/show', [PortController::class, 'view'])->name('view_port');
+
+    Route::get('/user/edit', [UserController::class, 'show'])->name('edit_user');
+    Route::post('/user/edit', [UserController::class, 'changeUserInfo'])->name('edit_user');
 });
 
-Route::get('/', function () { return view('welcome'); });
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', function() { if (Auth::check()) { return redirect()->route('all_campus'); } return view('content.home'); })->name('home');
 
-Route::get('/campus', [CampusController::class, 'index'])->name('all_campus');
-Route::get('/campus/{campus}/show', [CampusController::class, 'show'])->name('view_campus');
-
-Route::get('/building/{campus?}', [BuildingController::class, 'index'])->name('all_buildings');
-Route::get('/building/{building}/show', [CampusController::class, 'show'])->name('view_building');
-
-Route::get('/switch/{building?}', [NetworkSwitchController::class, 'index'])->name('all_switches');
-Route::get('/switch/{switch}/show', [NetworkSwitchController::class, 'show'])->name('view_switch');
-
-Route::get('/port/{switch?}', [PortController::class, 'index'])->name('all_ports');
-Route::get('/port/{port}/show', [PortController::class, 'show'])->name('view_port');
 

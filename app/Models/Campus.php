@@ -11,6 +11,10 @@ class Campus extends Model
 
     protected $fillable = ['name', 'address'];
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public function buildings() {
         return $this->hasMany(Building::class);
     }

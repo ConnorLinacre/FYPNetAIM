@@ -15,6 +15,7 @@ class CreateCampusesTable extends Migration
     {
         Schema::create('campuses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id");
             $table->string("name");
             $table->string("address");
             $table->timestamps();

@@ -17,10 +17,10 @@
     <p></p>
     <div id="form-group">
         <label for="installed_on-input">Installed On</label>
-        <input name="installed_on" value="{{ $installed_on ?? "" }}" class="form-control" id="installed_on-input">
+        <input type="date" name="installed_on" value="{{ $installed_on ?? "" }}" class="form-control" id="installed_on-input">
     </div>
     <p></p>
     <div id="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-dark" style="margin-top: 10px">Submit</button>
     </div>
 </form>

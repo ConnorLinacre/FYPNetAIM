@@ -16,6 +16,7 @@ class CreatePortsTable extends Migration
         Schema::create('ports', function (Blueprint $table) {
             $table->id();
             $table->foreignId("switch_id");
+            $table->foreignId("user_id");
             $table->string("port_number");
             $table->string("access_point");
             $table->string("installed_by");

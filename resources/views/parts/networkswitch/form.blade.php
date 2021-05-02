@@ -16,6 +16,6 @@
     </div>
     <p></p>
     <div id="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-dark" style="margin-top: 10px">Submit</button>
     </div>
 </form>

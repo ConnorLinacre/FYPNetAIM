@@ -23,7 +23,7 @@ class CampusFactory extends Factory
     {
         return [
             'name' => $this->faker->firstName . ' ' . $this->faker->lastName . " Campus",
-            'address' => $this->faker->address
+            'address' => $this->faker->randomNumber(2) . ' ' . $this->faker->streetName . ', ' . $this->faker->city . ', ' . $this->faker->postcode,
         ];
     }
 }

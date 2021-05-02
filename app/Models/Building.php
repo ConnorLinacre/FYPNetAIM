@@ -15,6 +15,10 @@ class Building extends Model
         return $this->belongsTo(Campus::class);
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public function switches() {
         return $this->hasMany(NetworkSwitch::class);
     }
