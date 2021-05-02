@@ -9,6 +9,7 @@
 
 @section('content')
 <span style="font-size: 24px">Lorem Ipsum Dolor Sit Het</span><br />
+<!-- Back button to return to previous page. Done as form so button can be used instead of <a> tag -->
 <form action="{{ route('all_campus') }}" method="get">
     <button type="submit" class="btn btn-success">Back to Campus</button>
 </form>
