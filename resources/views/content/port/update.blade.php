@@ -3,5 +3,5 @@
 @section('title', "Update Building")
 
 @section('content')
-    @include('parts.building.form', ['action' => route('edit_port', ['port'=>$building,]), 'port' => $port])
+    @include('parts.port.form', ['action' => route('edit_port', ['port'=>$port,]), 'port' => $port])
 @endsection
