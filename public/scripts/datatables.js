@@ -4215,6 +4215,7 @@
         var language = settings.oLanguage;
         var previousSearch = settings.oPreviousSearch;
         var features = settings.aanFeatures;
+        // {ADJUSTMENT} Style has been changed, to add a background to the search box
         var input = '<input type="search" class="'+classes.sFilterInput+'" style="background: #ccc; border-radius: 25px;"/>';
 
         var str = language.sSearch;
@@ -4226,6 +4227,7 @@
             'id': ! features.f ? tableId+'_filter' : null,
             'class': classes.sFilter
         } )
+            // {ADJUSTMENT} Style was changed to add a bubble around the entire search box
             .append( $('<label class="text-light" style="background: #76797E; border: 2px solid #343a40; border-radius: 25px; padding: 2px 7px 2px 7px"/>' ).append( str ) );
 
         var searchFn = function() {
@@ -4858,7 +4860,7 @@
             d2       = Array.isArray( menu[0] ),
             lengths  = d2 ? menu[0] : menu,
             language = d2 ? menu[1] : menu;
-
+        // {ADJUSTMENT} Style has been changed to add background and curve the dropdown for size selection
         var select = $('<select style="background: #ccc; border-radius: 25px;"/>', {
             'name':          tableId+'_length',
             'aria-controls': tableId,
@@ -4873,7 +4875,7 @@
                 lengths[i]
             );
         }
-
+        // {ADJUSTMENT} Style has been changed to add a bubble around entire size selection
         var div = $('<div><label class="text-light" style="background: #76797E; border: 2px solid #343a40; border-radius: 25px; padding: 2px 7px 2px 7px"/></div>').addClass( classes.sLength );
         if ( ! settings.aanFeatures.l ) {
             div[0].id = tableId+'_length';
@@ -4924,6 +4926,7 @@
             redraw = function( settings ) {
                 _fnDraw( settings );
             },
+            // {ADJUSTMENT} Style has been changed to add a bubble around the pagination section
             node = $('<div class="text-light" style="background: #76797E; border: 2px solid #343a40; border-radius: 25px; padding: 2px 7px 2px 7px; margin: 10px; color: #f8f9fa!important;"/>').addClass( settings.oClasses.sPaging + type )[0],
             features = settings.aanFeatures;
 

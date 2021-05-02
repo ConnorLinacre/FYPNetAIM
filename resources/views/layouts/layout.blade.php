@@ -30,6 +30,7 @@
 <script>
     @yield('scripts')
 </script>
+<!-- The container is a bordered box, with 2% margin. The border is then defined in an internal div, with a 1% top border, and a 50px side border -->
 <div id="container" style="padding-left: 2%; padding-right: 2%">
     <div id="content" class="text-dark" style="padding: 1% 50px; border: 4px solid #137e48; border-radius: 20px; background-color: #2eb872">
         @yield('content')

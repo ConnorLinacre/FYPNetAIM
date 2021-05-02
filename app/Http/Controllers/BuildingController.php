@@ -23,11 +23,22 @@ class BuildingController extends Controller
     }
 
     public function store(Request $request, Campus $campus) {
-        $building = $campus->buildings()->make([
+        /*
+         * Coding for saving multiple one->many on single model proved challenging
+         * Saving the item with the user id manually set would not work
+         * which meant that the item had to be created through the buildings
+         * and then saved via the user.
+         *
+         * This took some time to figure out, as no online resources were available to help
+         * and trial and error had to be employed to find a solution.
+         *
+         * This was the same for all of the store methods, barring campus (since it has a single relationship)
+         */
+        $building = $campus->buildings()->make([ // Make creates a model entry without saving
             'name' => $request->input('name'),
             'address' => $request->input('address')
         ]);
-        Auth::user()->buildings()->save($building);
+        Auth::user()->buildings()->save($building); // Save the new building via the user
         return redirect()->route('all_buildings', $campus);
     }
 
@@ -42,7 +53,7 @@ class BuildingController extends Controller
     }
 
     public function update(Request $request, Building $building) {
-        if ($building->user != Auth::user()) { return abort(403); }
+        if ($building->user != Auth::user()) { return abort(403); } // If not owner, return 403
         $building->update([
             'name' => $request->input('name'),
             'address' => $request->input('address')

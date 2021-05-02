@@ -3,6 +3,7 @@
 @section('title', "All Buildings")
 
 @section('scripts')
+    // This adds datatable functionality to the table, which allows for searching and pagination
     $(document).ready(function(){ $('#buildings').DataTable(); });
 @endsection
 

@@ -47,6 +47,9 @@ class CampusController extends Controller
 
     public function destroy(Campus $campus) {
         if ($campus->user != Auth::user()) { return abort(403); }
+        /*
+         * Multiple deletions to prevent orphaned data
+         */
         foreach ($campus->buildings as $building) {
             foreach ($building->switches as $switch) {
                 foreach ($switch->ports as $port) {

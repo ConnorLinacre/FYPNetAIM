@@ -19,16 +19,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /*
+         * Since multiple relationships are on a single child
+         * generation of fake data had to be done in a multistage fashion
+         *
+         * First, the user is generated, and then stored in a private class variable
+         * this is a workaround since function variables are not passed down the chain
+         *
+         * After that, the child models are seeded, each being created from the parent,
+         * with the user id passed through from the private class variable.
+         */
         User::factory(3)->create()->each(function ($user) {
-            $campuses = Campus::factory(2)->make();
+            $campuses = Campus::factory(2)->make(); // Generate campuses
 
-            $user->campuses()->saveMany($campuses);
+            $user->campuses()->saveMany($campuses); // Save them to the user
             $this->user = $user;
 
             $campuses->each(function ($campus) {
-                $buildings = Building::factory(2)->make(['user_id' => $this->user->id,]);
+                $buildings = Building::factory(2)->make(['user_id' => $this->user->id,]); // Generate the buildings with the user id
 
-                $campus->buildings()->saveMany($buildings);
+                $campus->buildings()->saveMany($buildings); // Save them to the campus
                 $buildings->each(function ($building) {
                     $switches = NetworkSwitch::factory(2)->make(['user_id' => $this->user->id,]);
 
