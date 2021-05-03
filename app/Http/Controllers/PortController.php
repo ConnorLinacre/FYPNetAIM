@@ -52,7 +52,8 @@ class PortController extends Controller
             'installed_on' => $request->input("installed_on"),
         ]);
         $port->save();
-        return redirect()->route('all_ports', $port->switch);
+        //dd($port);
+        return redirect()->route('all_ports', ['switch' => $port->switch,]);
     }
 
     public function destroy(Port $port) {

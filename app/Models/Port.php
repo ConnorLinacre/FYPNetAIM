@@ -11,7 +11,7 @@ class Port extends Model
 
     protected $fillable = ['port_number', 'access_point', 'installed_by', 'installed_on'];
 
-    public function networkSwitch() {
+    public function switch() {
         return $this->belongsTo(NetworkSwitch::class, "switch_id");
     }
 

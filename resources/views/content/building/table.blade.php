@@ -9,7 +9,7 @@
 
 @section('content')
 <span style="font-size: 24px">Listing of all known building within campus:</span><br />
-<!-- Back button to return to previous page. Done as form so button can be used instead of <a> tag -->
+<!-- Back button to return to previous page. Done as form so button can be used instead of <a> tag U1653940 -->
 <form action="{{ route('all_campus') }}" method="get">
     <button type="submit" class="btn btn-success">Back to Campus</button>
 </form>
